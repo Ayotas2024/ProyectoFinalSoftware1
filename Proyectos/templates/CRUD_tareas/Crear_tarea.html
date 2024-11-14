@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear tareas</title>
+</head>
+<body>
+    <h1>Crear Tarea</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <strong style="color:red;">{{message}}</strong>
+        {% endfor %}
+    {% endif %}
+    <form action="{% url 'crear_tarea' seccion.id_seccion %}" method="POST">{% csrf_token %}
+        <input type="text" name="nombre" placeholder="Nombre de la Tarea">
+        <textarea name="descripcion" placeholder="Descripción"></textarea>
+        <input type="submit" value="Crear Tarea">
+    </form>
+</body>
+</html>

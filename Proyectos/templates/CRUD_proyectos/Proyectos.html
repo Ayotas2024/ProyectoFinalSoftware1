@@ -1,0 +1,39 @@
+{% extends "./base.html" %}
+{% load static %}
+{%block title%}Home{%endblock%}
+{%block style%}<link rel="stylesheet" href="{% static 'css/Notas.css' %}" />{%endblock%}
+{% block body%}
+{% if messages %}
+    {% for message in messages %}
+        <strong style="color:red;">{{message}}</strong>
+    {% endfor %}
+{% endif %}
+<button class="animated-button">
+    <a href="{% url 'crear_proyecto_view' %}">
+  <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
+    <path
+      d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+    ></path>
+  </svg>
+  <span class="text">NUEVO</span>
+  <span class="circle"></span>
+  <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
+    <path
+      d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+    ></path>
+  </svg>
+  </a>
+  </button>
+  <br>
+    <div class="notas">
+        {%for p in proyectos%}
+            <button class="nota">
+            <a href="{% url 'CRUD_secciones' p.id_proyecto %}">{{p.nombre}}</a>
+            <p>{% if p.estado %}Terminado{%else%}Pendiente{%endif%}</p>
+            <a href="{% url 'editar_proyecto_view' p.id_proyecto %}">Editar</a>
+            <a href="{% url 'eliminar_proyecto' p.id_proyecto %}">Eliminar</a>
+            </button>
+        {% endfor %}
+    </div>
+    </div>
+{% endblock%}

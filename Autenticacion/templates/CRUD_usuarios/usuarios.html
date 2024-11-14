@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios</title>
+</head>
+<body>
+    <h1>Gestión de Usuarios</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <strong style="color:red;">{{message}}</strong>
+        {% endfor %}
+    {% endif %}
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Usuario</th>
+                <th>Rol</th>
+                <th colspan="2">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for u in usuarios%}
+                <tr>
+                    <!-- Campos -->
+                    <td>{{u.user.id}}</td>
+                    <td>{{u.nombre}} {{u.apellido}}</td>
+                    <td>{{u.user}}</td>
+                    <td>{{u.id_rol}}</td>
+                    <td><a href="{% url 'editar_usuario' u.user.id%}">Editar</a></td>
+                    <td><a href="{% url 'eliminar_usuario' u.user.id%}">Eliminar</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

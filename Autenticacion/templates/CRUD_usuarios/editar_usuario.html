@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuario</title>
+</head>
+<body>
+    <h1>Editar Usuario</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <strong style="color:red;">{{message}}</strong>
+        {% endfor %}
+    {% endif %}
+    <form action="/editar_usuario2/{{usuario.user.id}}" method="POST">{% csrf_token %}
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre" value="{{usuario.nombre}}" required>
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" placeholder="Apellido" value="{{usuario.apellido}}" required>
+        <label for="usuario">Nombre de Usuario:</label>
+        <input type="text" id="usuario" name="usuario" placeholder="Usuario" value="{{usuario.user.username}}" required>
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" placeholder="Correo" value="{{usuario.user.email}}" required>
+        <label for="contraseña">Contraseña:</label>
+        <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña" value="{{usuario.user.password}}" required>
+        <input type="hidden" name="rol" value="2" >
+        <input type="submit" value="Guardar cambios">
+    </form>
+</body>
+</html>

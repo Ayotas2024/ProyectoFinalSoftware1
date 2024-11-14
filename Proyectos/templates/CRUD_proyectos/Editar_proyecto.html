@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar proyecto</title>
+</head>
+<body>
+    <h1>Editar proyecto</h1>
+    <form action="{% url 'editar_proyecto' proyecto.id_proyecto %}" method="POST">{% csrf_token %}
+        <input type="text" name="nombre" value="{{proyecto.nombre}}">
+        Estado<input type="checkbox" name="estado" {% if proyecto.estado %} checked {% endif %}>
+        <input type="submit" value="Guardar Cambios">
+    </form>
+</body>
+</html>

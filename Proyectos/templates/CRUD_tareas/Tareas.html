@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Tareas</title>
+</head>
+<body>
+    <h1>Gestión de Tareas para "{{seccion.nombre}}"</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <strong style="color:red;">{{message}}</strong>
+        {% endfor %}
+    {% endif %}
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th colspan="2">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for t in tareas%}
+                <tr>
+                    <!-- Campos -->
+                    <td>{{t.nombre}}</td>
+                    <td>{{t.descripcion}}</td>
+                    <td>
+                        <a href="{% url 'editar_tarea_view' t.id_tarea %}">Editar</a>
+                        <a href="{% url 'eliminar_tarea' t.id_tarea %}">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button><a href="{% url 'crear_tarea_view' seccion.id_seccion %}">Añadir tarea</a></button>
+</body>
+</html>

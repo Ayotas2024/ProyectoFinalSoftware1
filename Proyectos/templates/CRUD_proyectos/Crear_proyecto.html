@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear proyecto</title>
+</head>
+<body>
+    <h1>Crear proyecto</h1>
+    <form action="{% url 'crear_proyecto' request.user.id %}" method="POST">{% csrf_token %}
+        <input type="text" name="nombre" placeholder="Nombre del proyecto">
+        <input type="checkbox" name="estado" hidden checked>
+        <input type="submit" value="Crear">
+    </form>
+</body>
+</html>

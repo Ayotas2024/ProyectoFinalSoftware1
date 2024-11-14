@@ -1,0 +1,30 @@
+{% extends "./base.html" %}
+{% load static %}
+{%block title%}Home{%endblock%}
+{%block style%}<link rel="stylesheet" href="{% static 'css/Pomodoro.css' %}" />{%endblock%}
+{% block body%}
+<div class="container">
+        <main>
+            <nav class="timer-botones">
+                <button class="modo-boton" id="pomodoro-btn">Pomodoro</button>
+                <button class="modo-boton" id="descanso-corto-btn">Descanso Corto</button>
+                <button class="modo-boton" id="descanso-largo-btn">Descanso Largo</button>
+            </nav>
+            <div class="timer">
+                <div class="time-display">25:00</div>
+                <div class="controles">
+                    <button class="iniciar-button">Iniciar</button>
+                </div>
+                <br>
+            <div class="tareas">
+                <h2>Tareas</h2>
+                <ul id="tareasLista"></ul>
+                <input type="text" id="nuevaTarea" placeholder="Nueva tarea">
+                <hr>
+                <button class="añadir-tarea-button">Añadir Tarea</button>
+            </div>
+        </div>
+        </main>
+    </div>
+    <script src="{% static 'js/Pomodoro.js' %}"></script>
+{% endblock%}

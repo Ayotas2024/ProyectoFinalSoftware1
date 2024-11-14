@@ -1,0 +1,46 @@
+{% extends "./base.html" %}
+{% load static %}
+{%block title%}Home{%endblock%}
+{%block style%}<link rel="stylesheet" href="" />{%endblock%}
+{% block body%}
+
+<!-- Contenido principal -->
+<div class="container">
+  <main>
+    <div class="button-row">
+      <button class="image-button">
+        <a href="{% url 'editar_usuario' request.user.id %}">
+            <img src="{% static 'img/Perfil.png' %}" alt="Perfil" />
+            <p>Perfil</p>
+        </a>
+      </button>
+      <button class="image-button">
+        <a  href="{% url 'CRUD_proyectos' request.user.id %}">
+            <img src="{% static 'img/proyectos.png' %}" alt="Proyectos" />
+            <p>Proyectos</p>
+        </a>
+      </button>
+      <button class="image-button">
+        <img src="{% static 'img/notas.png' %}" alt="Notas" />
+        <p>Notas</p>
+      </button>
+    </div>
+    <div class="button-row">
+      <button class="image-button">
+        <a href="{% url 'pomodoro' %}">
+            <img src="{% static 'img/cronometro.png' %}" alt="Pomodoro" />
+            <p>Pomodoro</p>
+        </a>
+      </button>
+      <button class="image-button">
+        <img src="{% static 'img/calendario.png' %}" alt="Calendario" />
+        <p>Calendario</p>
+      </button>
+      <button class="image-button">
+        <img src="{% static 'img/configuracion.png' %}" alt="Configuración" />
+        <p>Configuración</p>
+      </button>
+    </div>
+  </main>
+</div>
+{% endblock%}

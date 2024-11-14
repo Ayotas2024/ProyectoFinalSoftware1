@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar tarea</title>
+</head>
+<body>
+    <h1>Editar Tarea</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <strong style="color:red;">{{message}}</strong>
+        {% endfor %}
+    {% endif %}
+    <form action= "{% url 'editar_tarea' tarea.id_tarea %}" method="POST">{% csrf_token %}
+        <input type="text" name="nombre" placeholder="Nombre de la Tarea" value="{{tarea.nombre}}">
+        <textarea name="descripcion" placeholder="Descripción">{{tarea.descripcion}}</textarea>
+        <input type="submit" value="Guardar Cambios">
+    </form>
+</body>
+</html>

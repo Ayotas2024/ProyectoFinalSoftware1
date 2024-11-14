@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="{% static 'css/Register.css' %}" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <form action="{% url 'registrarse2' %}" method="POST" class="form">
+        {% csrf_token %}
+        <h1 class="titulo">Registro</h1>
+        {% if messages %} {% for message in messages %}
+        <strong style="color: red">{{message}}</strong>
+        {% endfor %} {% endif %}
+        <div class="inp">
+          <input
+            type="text"
+            class="input"
+            id="nombre"
+            name="nombre"
+            placeholder="Nombre"
+          />
+        </div>
+        <div class="inp">
+          <input
+            type="text"
+            class="input"
+            id="apellido"
+            name="apellido"
+            placeholder="Apellido"
+          />
+        </div>
+        <div class="inp">
+          <input
+            type="text"
+            class="input"
+            id="usuario"
+            name="usuario"
+            placeholder="Usuario"
+          />
+        </div>
+        <div class="inp">
+          <input
+            type="email"
+            class="input"
+            id="correo"
+            name="correo"
+            placeholder="Correo"
+          />
+        </div>
+        <div class="inp">
+          <input
+            type="password"
+            class="input"
+            id="contraseña"
+            name="contraseña"
+            placeholder="Contraseña"
+          />
+        </div>
+        <input type="hidden" name="rol" value="2" />
+        <button class="Submit">Terminar</button>
+        <div class="social">
+          <div class="google">
+            <img
+              class="logo"
+              src="{% static 'img/Gmail.png' %}"
+              alt="Logo de gmail"
+            />Google
+          </div>
+          <div class="facebook">
+            <img
+              class="logo"
+              src="{% static 'img/Face.png' %}"
+              alt="Logo de facebook"
+            />Facebook
+          </div>
+        </div>
+      </form>
+      <div></div>
+      <div class="banner">
+        <h1 class="regs_text">¡ BIENVENIDO !<br /></h1>
+        <p class="sub_regs">Este es el lugar perfecto para</p>
+        <p class="sub_regs">crear proyectos y compartir ideas</p>
+      </div>
+    </div>
+  </body>
+</html>

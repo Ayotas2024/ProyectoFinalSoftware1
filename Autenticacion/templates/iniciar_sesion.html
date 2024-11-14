@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/Login.css' %}">
+    <title>Iniciar Sesión</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <form action="{% url 'login'%}" method="POST" class="form">
+        {%csrf_token%}
+        <h1 class="titulo">Inicio</h1>
+        {% if messages %} {% for message in messages %}
+        <strong style="color: red">{{message}}</strong>
+        {% endfor %} {% endif %}
+        <div class="inp">
+          <input
+            type="text"
+            name="username"
+            id="username"
+            class="input"
+            placeholder="Nombre de Usuario"
+          />
+        </div>
+        <div class="inp">
+          <input
+            type="password"
+            name="contraseña"
+            id="contraseña"
+            class="input"
+            placeholder="Contraseña"
+          />
+        </div>
+        <br />
+        <div class="links"><a href="#">Olvidé mi Contraseña</a></div>
+        <button class="Submit">Iniciar Sesión</button>
+        <p class="footer">
+          ¿No tienes cuenta? <a href="{% url 'register_view' %}" class="link">Por favor, registrate</a>
+        </p>
+        <div class="social">
+          <div class="google">
+            <img
+              class="logo"
+              src="{% static 'img/Gmail.png' %}"
+              alt="Logo de gmail"
+            />Google
+          </div>
+          <div class="facebook">
+            <img
+              class="logo"
+              src="{% static 'img/Face.png' %}"
+              alt="Logo de facebook"
+            />Facebook
+          </div>
+        </div>
+      </form>
+      <div></div>
+      <div class="banner">
+        <h1 class="wel_text">BIENVENIDO DE VUELTA<br /></h1>
+        <p class="sub_wel">¡Nos da gusto verte!</p>
+      </div>
+    </div>
+  </body>
+</html>

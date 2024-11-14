@@ -1,0 +1,44 @@
+{% extends "./base.html" %}
+{% load static %}
+{%block title%}Home{%endblock%}
+{%block style%}<link rel="stylesheet" href="{% static 'css/Notas.css' %}" />{%endblock%}
+{% block body%}
+{% if messages %}
+    {% for message in messages %}
+        <strong style="color:red;">{{message}}</strong>
+    {% endfor %}
+{% endif %}
+
+
+  <br>
+    <div class="notas">
+        {%for s in secciones%}
+            <button class="nota">
+            <p>{{s.nombre}}</p>
+            <a href="{% url 'CRUD_tareas' s.id_seccion%}">Tareas</a>
+            <a href="{% url 'editar_seccion_view' s.id_seccion%}">Editar</a>
+            <a href="{% url 'eliminar_seccion' s.id_seccion%}">Eliminar</a>
+            </button>
+        {% endfor %}
+    </div>
+    </div>
+    <!-- Entrada -->
+    <form action="{% url 'crear_seccion' proyecto.id_proyecto %}" method="POST">{% csrf_token %}
+            <input type="text" name="nombre" placeholder="Nombre de la Sección">
+            <button type="submit" class="animated-button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
+                <path
+                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                ></path>
+            </svg>
+            <span class="text">Añadir</span>
+            <span class="circle"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
+                <path
+                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                ></path>
+            </svg>
+            </button>
+    </form>
+            
+{%endblock%}
